@@ -1,0 +1,22 @@
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <span class="shape" [ngClass]="{'bg-success': getDatacard.checkedIn === true, 
+            'bg-danger' : getDatacard.checkedIn === false}" ></span>
+                <input type="text" class="form-control fname" [value]="getDatacard.fullname" #fullname [disabled]="!editMode">
+        </div>
+    </div>
+    <div class="card-body">
+           <p>Check In Date : {{(getDatacard.checkInDate | date ) || "No Check In"}}</p>
+           <p>Children : {{(getDatacard.children?.length) || "0"}}</p>
+    </div>
+    <div class="card-footer justify-content-between d-flex">
+        <button class="btn btn-primary" type="button" *ngIf="!editMode"  (click)="editMode=true">Edit</button>
+        <button class="btn btn-primary" type="button" *ngIf="editMode"  (click)="editMode=false  ;onEdit(fullname.value)">Done</button>
+        <button class="btn btn-danger" (click)="onDelete(getDatacard.id)">Delete</button>
+    </div>
+</div>

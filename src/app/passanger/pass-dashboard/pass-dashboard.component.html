@@ -1,0 +1,7 @@
+
+
+<app-pass-count [checkNumber]="checkNumberAll" [countCheck]="passangerArr.length"></app-pass-count>
+<p class="alert alert-dark" *ngFor="let pass of passangerArr">
+    {{pass.fullname}}
+</p>
+<app-pass-card *ngFor="let pass of passangerArr" [getDatacard]="pass" (sendData)="onRemove(pass.id)"></app-pass-card>
